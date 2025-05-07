@@ -178,12 +178,12 @@ function Home() {
 
 			// Scroll vertically
 			if (y < scrollMargin) {
-				document.body.scrollBy({
+				window.scrollBy({
 					top: -scrollSpeed,
 					behavior: "smooth",
 				});
 			} else if (y > viewportHeight - scrollMargin) {
-				document.body.scrollBy({
+				window.scrollBy({
 					top: scrollSpeed,
 					behavior: "smooth",
 				});

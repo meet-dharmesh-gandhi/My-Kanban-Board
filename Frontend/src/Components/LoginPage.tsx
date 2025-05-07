@@ -108,6 +108,7 @@ export default function LoginPage({ mode = "login" }: LoginPageProps) {
 					{mode === "login" ? "Sign Up" : "Login"}
 				</Link>
 			</p>
+			<h4>Be Patient, It may take us some time to get your data!</h4>
 		</div>
 	);
 }

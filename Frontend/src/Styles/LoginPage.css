@@ -8,6 +8,17 @@
 	height: 100dvh;
 }
 
+.login-page-wrapper h4 {
+	max-width: 80dvw;
+	word-wrap: break-word;
+	word-break: break-word;
+	color: white;
+}
+
+.login-page-wrapper p {
+	color: white;
+}
+
 .login-page {
 	display: flex;
 	justify-content: center;
@@ -19,6 +30,7 @@
 	border-radius: 1em;
 	color: rgb(0, 0, 0);
 	border: 2px solid rgb(48, 76, 255);
+	max-width: 95dvw;
 }
 
 .login-page h2 {
@@ -47,6 +59,8 @@
 
 .input-box input {
 	padding: 0.3em 0.3em;
+	background-color: #373737;
+	border: 2px solid rgb(133, 133, 133);
 }
 
 .login-button {
@@ -55,6 +69,7 @@
 	transition: background-color 0.2s ease-in-out;
 	outline: none;
 	border: none;
+	color: white;
 }
 
 .login-button:focus,

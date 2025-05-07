@@ -8,6 +8,12 @@
 	gap: 4em;
 }
 
+.loader-wrapper h5 {
+	max-width: 80dvw;
+	word-wrap: break-word;
+	word-break: break-word;
+}
+
 .loader-wrapper h1 {
 	position: relative;
 	font-size: large;

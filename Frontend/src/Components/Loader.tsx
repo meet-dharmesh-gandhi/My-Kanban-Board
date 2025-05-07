@@ -6,6 +6,7 @@ export default function Loader() {
 	return (
 		<div className="loader-wrapper">
 			<h1>Finding You</h1>
+			<h5>Be Patient, It may take us some while to get your data!</h5>
 			<FaMagnifyingGlass className="magnifying-glass" />
 			<div className="loader">
 				{/* Biker */}
