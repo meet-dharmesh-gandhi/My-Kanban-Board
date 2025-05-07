@@ -39,7 +39,7 @@ export default function LoginPage({ mode = "login" }: LoginPageProps) {
 				else return "OK";
 			})
 			.then((data) => {
-				if (data === "OK") navigate("/board");
+				if (data === "OK") navigate("/");
 				else addNotification(data);
 			});
 	}
@@ -66,7 +66,7 @@ export default function LoginPage({ mode = "login" }: LoginPageProps) {
 				else return "OK";
 			})
 			.then((data) => {
-				if (data === "OK") navigate("/board");
+				if (data === "OK") navigate("/");
 				else addNotification(data);
 			});
 	}
