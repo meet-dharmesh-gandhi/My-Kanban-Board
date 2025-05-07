@@ -1,9 +1,10 @@
 body {
 	width: 100dvw;
-	min-height: 0;
+	min-height: 100dvh;
 	height: 100%;
 	overflow-x: hidden;
 	position: relative;
+	background-color: #242424;
 }
 
 * {

@@ -52,7 +52,7 @@ export default function App() {
 			>
 				<BrowserRouter>
 					<Routes>
-						<Route path="/board" element={<Home />} />
+						<Route path="/" element={<Home />} />
 						<Route path="/login" element={<LoginPage />} />
 						<Route
 							path="/signup"
