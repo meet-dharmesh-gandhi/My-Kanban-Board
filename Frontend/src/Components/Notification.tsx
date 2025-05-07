@@ -14,7 +14,7 @@ export default function Notification() {
 							key={"notification-" + ind}
 							className="notification"
 						>
-							{ele}
+							{ele.message}
 						</div>
 					))}
 				</div>

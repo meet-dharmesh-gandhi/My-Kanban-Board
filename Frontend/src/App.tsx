@@ -5,22 +5,42 @@ import LoginPage from "./Components/LoginPage";
 import NotFound from "./Components/NotFound";
 import Notification from "./Components/Notification";
 import { notificationContext } from "./Contexts/NotificationContext";
-import { useState } from "react";
+import { useReducer } from "react";
 import Loader from "./Components/Loader";
 
+export interface NotificationProps {
+	id: number;
+	message: string;
+}
+
+type Action =
+	| { type: "ADD"; payload: NotificationProps }
+	| { type: "REMOVE"; payload: number };
+
+function notificationReducer(
+	notifications: NotificationProps[],
+	action: Action
+) {
+	if (action.type === "ADD") return [...notifications, action.payload];
+	else if (action.type === "REMOVE")
+		return notifications.filter((ele) => ele.id !== action.payload);
+	else return notifications;
+}
+
 export default function App() {
-	const [notifications, setNotifications] = useState<Array<string>>([]);
+	const [notifications, setNotifications] = useReducer(
+		notificationReducer,
+		[]
+	);
 
 	function addNotification(newNotification: string) {
-		setNotifications((prev) => [...prev, newNotification]);
+		const id = Date.now() + Math.random();
+		setNotifications({
+			type: "ADD",
+			payload: { id, message: newNotification },
+		});
 		setTimeout(
-			() =>
-				// @ts-expect-error the new array length may not be the same as the original one
-				setNotifications((prev) =>
-					prev
-						.filter((ele) => ele !== newNotification)
-						.map((ele) => [...ele])
-				),
+			() => setNotifications({ type: "REMOVE", payload: id }),
 			3000
 		);
 	}
