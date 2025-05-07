@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import svgr from "vite-plugin-svgr";
+import { viteStaticCopy } from "vite-plugin-static-copy";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -14,6 +15,14 @@ export default defineConfig({
 				titleProp: true,
 			},
 			include: "**/*.svg",
+		}),
+		viteStaticCopy({
+			targets: [
+				{
+					src: "_redirects",
+					dest: ".",
+				},
+			],
 		}),
 	],
 });
