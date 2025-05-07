@@ -1,0 +1,191 @@
+.loader-wrapper {
+	width: 100dvw;
+	height: 100dvh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 4em;
+}
+
+.loader-wrapper h1 {
+	position: relative;
+	font-size: large;
+}
+
+.magnifying-glass {
+	position: absolute;
+	animation: lookup 12s linear infinite;
+}
+
+.magnifying-glass svg {
+	width: 2em;
+	height: 2em;
+}
+
+.loader {
+	position: relative;
+	width: 12em;
+	height: 3em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+}
+
+.loader svg {
+	width: 3em;
+	height: 3em;
+	background-color: white;
+	left: calc(25% * var(--index));
+	position: absolute;
+	animation: move 16s infinite linear;
+}
+
+.loader::after {
+	content: "";
+	width: 3em;
+	height: 3em;
+	position: absolute;
+	right: 0;
+	animation: toggle 4s infinite linear;
+}
+
+@keyframes lookup {
+	0% {
+		top: 70%;
+		left: 50%;
+		width: 1em;
+		height: 1em;
+		transform: rotateZ(0deg);
+		fill: white;
+	}
+	25% {
+		top: 50%;
+		left: 70%;
+		width: 2em;
+		height: 2em;
+		transform: rotateZ(45deg);
+		fill: rgb(48, 134, 255);
+	}
+	50% {
+		top: 30%;
+		left: 50%;
+		width: 3em;
+		height: 3em;
+		transform: rotateZ(90deg);
+		fill: rgb(255, 117, 117);
+	}
+	75% {
+		top: 50%;
+		left: 30%;
+		width: 2em;
+		height: 2em;
+		transform: rotateZ(45deg);
+		fill: rgb(93, 255, 115);
+	}
+	100% {
+		top: 70%;
+		left: 50%;
+		width: 1em;
+		height: 1em;
+		transform: rotateZ(0deg);
+		fill: white;
+	}
+}
+
+@keyframes move {
+	0% {
+		left: calc(25% * var(--index));
+	}
+	24% {
+		left: calc(25% * var(--index));
+	}
+	25% {
+		left: calc(25% + (25% * var(--index)));
+	}
+	49% {
+		left: calc(25% + (25% * var(--index)));
+	}
+	50% {
+		left: calc(50% + (25% * var(--index)));
+	}
+	74% {
+		left: calc(50% + (25% * var(--index)));
+	}
+	75% {
+		left: calc(75% + (25% * var(--index)));
+	}
+	99% {
+		left: calc(75% + (25% * var(--index)));
+	}
+	100% {
+		left: calc(100% + (25% * var(--index)));
+	}
+}
+
+@keyframes toggle {
+	10% {
+		background-color: transparent;
+	}
+	15% {
+		background-color: rgb(48, 134, 255);
+	}
+	40% {
+		background-color: rgb(48, 134, 255);
+	}
+	44% {
+		background-color: rgb(255, 117, 117);
+	}
+	48% {
+		background-color: rgb(93, 255, 115);
+	}
+	52% {
+		background-color: rgb(255, 117, 117);
+	}
+	56% {
+		background-color: rgb(93, 255, 115);
+	}
+	60% {
+		background-color: rgb(255, 117, 117);
+	}
+	64% {
+		background-color: rgb(93, 255, 115);
+	}
+	68% {
+		background-color: rgb(255, 117, 117);
+	}
+	85% {
+		background-color: rgb(255, 117, 117);
+	}
+	90% {
+		background-color: transparent;
+	}
+}
+
+/* 
+.loader {
+	width: 90px;
+	height: 14px;
+	box-shadow: 0 3px 0 #fff;
+	display: grid;
+}
+.loader:before,
+.loader:after {
+	content: "";
+	grid-area: 1/1;
+	background: radial-gradient(circle closest-side, var(--c, red) 92%, #0000) 0
+		0 / calc(100% / 4) 100%;
+	animation: l4 1s infinite linear;
+}
+.loader:after {
+	--c: #000;
+	background-color: #fff;
+	box-shadow: 0 -2px 0 0 #fff;
+	clip-path: inset(-2px calc(50% - 10px));
+}
+@keyframes l4 {
+	100% {
+		background-position: calc(100% / 3) 0;
+	}
+} */

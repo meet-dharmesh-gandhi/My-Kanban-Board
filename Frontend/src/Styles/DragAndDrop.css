@@ -1,0 +1,7 @@
+.dragging-element {
+	position: absolute;
+	/* pointer-events: none; */
+	z-index: 1000;
+	opacity: 0.5;
+	cursor: grabbing;
+}

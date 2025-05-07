@@ -1,0 +1,43 @@
+.task {
+	width: 100%;
+	padding: 0.7em 0.3em;
+	background-color: var(--color);
+	border: 1px solid white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: black;
+	background-color: #fff;
+	position: relative;
+	cursor: grab;
+	user-select: none;
+}
+
+.floating-button {
+	font-size: 1em;
+	border-radius: 0.5em;
+	position: absolute;
+	top: 0.3em;
+	right: 0.3em;
+	padding: 0.2em 0.4em;
+}
+
+.delete-task-button {
+	top: 0.3em;
+	left: 0.3em;
+	right: unset;
+}
+
+.edit-task-button svg {
+	fill: white;
+}
+
+.delete-task-button svg {
+	fill: red;
+}
+
+.task-input {
+	padding: 0.4em 1em;
+	display: flex;
+	justify-content: center;
+}

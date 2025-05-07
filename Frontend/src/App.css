@@ -1,0 +1,18 @@
+body {
+	width: 100dvw;
+	min-height: 0;
+	height: 100%;
+	overflow-x: hidden;
+	position: relative;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+#root {
+	height: 100%;
+	width: 100%;
+}

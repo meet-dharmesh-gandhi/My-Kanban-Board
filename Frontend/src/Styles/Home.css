@@ -1,0 +1,9 @@
+.app-div {
+	height: 100%;
+	padding: 1em;
+	gap: 1em;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}

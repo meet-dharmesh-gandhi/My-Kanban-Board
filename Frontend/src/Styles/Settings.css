@@ -1,0 +1,115 @@
+.dialog-box {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	padding: 3em;
+	flex-direction: column;
+	gap: 5em;
+}
+
+.dialog-box-close-button,
+.open-settings-button,
+.tasklists-delete-button {
+	background-color: transparent;
+	padding: 0.4em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition-property: background-color;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in-out;
+	outline: none;
+	border: none;
+	border-radius: 50px;
+}
+
+.dialog-box-close-button svg,
+.tasklists-delete-button svg {
+	width: 2em;
+	height: 2em;
+	fill: white;
+	transition: fill 0.2s linear;
+	transition-timing-function: ease-in-out;
+}
+
+.dialog-box-close-button:hover,
+.tasklists-delete-button:hover {
+	background-color: #d5d5d5;
+}
+
+.dialog-box-close-button:hover svg {
+	fill: black;
+}
+
+.dialog-box-close-button:focus,
+.dialog-box-close-button:focus-within,
+.tasklists-delete-button:focus,
+.tasklists-delete-button:focus-within,
+.open-settings-button:focus,
+.open-settings-button:focus-within {
+	border: none;
+	outline: none;
+}
+
+.open-settings-button {
+	position: fixed;
+	right: 1em;
+	top: 1em;
+	background-color: black;
+	transition-property: transform;
+	z-index: 999;
+}
+
+.open-settings-button svg {
+	width: 2em;
+	height: 2em;
+	fill: white;
+}
+
+.open-settings-button:hover {
+	transform: rotateZ(45deg);
+}
+
+.dialog-box-close-button {
+	position: absolute;
+	top: 1em;
+	right: 1em;
+}
+
+.dialog-box h2 {
+	font-size: xx-large;
+}
+
+.tasklists-list {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 2em;
+}
+
+.tasklists-list div {
+	display: flex;
+	gap: 1em;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.tasklists-list div input[type="text"] {
+	padding: 1em 0.5em;
+	width: fit-content;
+	min-width: 7em;
+}
+
+.tasklists-list div input[type="color"] {
+	width: 3em;
+	height: 3em;
+	padding: 0em;
+	outline: none;
+}
+
+.tasklists-delete-button:hover svg {
+	fill: red;
+}
