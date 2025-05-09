@@ -37,13 +37,60 @@ function Home() {
 	const scrollCache = useRef({
 		viewportHeight: window.innerHeight,
 		scrollMargin: 50,
-		scrollSpeed: 20,
+		scrollSpeed: 10,
 	});
 	const animationFrameId = useRef<number | null>(null);
 	const [openSettings, setOpenSettings] = useState(false);
 	const { addNotification } = useContext(notificationContext);
 	const navigate = useNavigate();
 	const [loading, setLoading] = useState(true);
+	const onMargin = useRef<0 | "U" | "D">(0);
+
+	useEffect(() => {
+		let scrollId: number = 0;
+
+		const scroll = () => {
+			if (!draggingElement.current) {
+				onMargin.current = 0;
+				return;
+			}
+			const { scrollSpeed } = scrollCache.current;
+			if (onMargin.current === "U") {
+				window.scrollBy({
+					top: -scrollSpeed,
+					behavior: "auto",
+				});
+			} else if (onMargin.current === "D") {
+				window.scrollBy({
+					top: scrollSpeed,
+					behavior: "auto",
+				});
+			}
+			scrollId = requestAnimationFrame(scroll);
+		};
+
+		const observeDragging = setInterval(() => {
+			if (
+				onMargin.current !== 0 &&
+				draggingElement.current &&
+				!scrollId
+			) {
+				scroll();
+			} else if (
+				(onMargin.current === 0 || !draggingElement.current) &&
+				scrollId
+			) {
+				cancelAnimationFrame(scrollId);
+				scrollId = 0;
+			}
+		}, 100);
+
+		return () => {
+			clearInterval(observeDragging);
+			cancelAnimationFrame(scrollId);
+			scrollId = 0;
+		};
+	}, []);
 
 	useEffect(() => {
 		// Update cache on resize
@@ -166,27 +213,22 @@ function Home() {
 		const onMove = (x: number, y: number) => {
 			if (!draggingElement.current) return;
 
-			const scrolledY = document.body.scrollTop;
+			const scrolledY = window.scrollY;
 
 			draggingElement.current.style.left =
 				x - draggingElement.current.offsetWidth / 2 + "px";
 			draggingElement.current.style.top =
-				y - draggingElement.current.offsetHeight / 2 + scrolledY + "px";
+				y - draggingElement.current.offsetHeight / 2 + "px";
 
-			const { viewportHeight, scrollMargin, scrollSpeed } =
-				scrollCache.current;
+			const { viewportHeight, scrollMargin } = scrollCache.current;
 
 			// Scroll vertically
-			if (y < scrollMargin) {
-				window.scrollBy({
-					top: -scrollSpeed,
-					behavior: "smooth",
-				});
-			} else if (y > viewportHeight - scrollMargin) {
-				window.scrollBy({
-					top: scrollSpeed,
-					behavior: "smooth",
-				});
+			if (y - scrolledY < scrollMargin) {
+				onMargin.current = "U";
+			} else if (y - scrolledY > viewportHeight - scrollMargin) {
+				onMargin.current = "D";
+			} else {
+				onMargin.current = 0;
 			}
 		};
 

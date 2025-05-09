@@ -12,11 +12,13 @@
 	max-width: 80dvw;
 	word-wrap: break-word;
 	word-break: break-word;
+	color: white;
 }
 
 .loader-wrapper h1 {
 	position: relative;
 	font-size: large;
+	color: white;
 }
 
 .magnifying-glass {
