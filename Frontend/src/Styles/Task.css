@@ -11,6 +11,7 @@
 	position: relative;
 	cursor: grab;
 	user-select: none;
+	margin: 1em 0em;
 }
 
 .floating-button {
